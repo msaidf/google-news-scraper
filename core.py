@@ -19,7 +19,7 @@ from extract_content import get_content, get_title
 
 NUMBER_OF_CALLS_TO_GOOGLE_NEWS_ENDPOINT = 0
 
-GOOGLE_NEWS_URL = 'https://www.google.co.jp/search?q={}&hl=ja&source=lnt&tbs=cdr%3A1%2Ccd_min%3A{}%2Ccd_max%3A{}&tbm=nws&start={}'
+GOOGLE_NEWS_URL = 'https://www.google.co.id/search?q={}&hl=ja&source=lnt&tbs=cdr%3A1%2Ccd_min%3A{}%2Ccd_max%3A{}&tbm=nws&start={}'
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -108,13 +108,13 @@ def get_keywords():
                 set([v.text for v in soup.find_all('td', {'class': 'devtableitem'}) if 'http' not in v.text])]
     assert len(keywords) > 0
 
-    random.shuffle(keywords)
-    for keyword in keywords:
-        japanese_keyword = translate(keyword, 'ja')
-        logging.debug('[Google Translate] {} -> {}'.format(keyword, japanese_keyword))
-        if re.search('[a-zA-Z]', japanese_keyword):  # we don't want that: Fed watch -> Fed時計
-            continue
-        yield japanese_keyword
+#    random.shuffle(keywords)
+#    for keyword in keywords:
+#        japanese_keyword = translate(keyword, 'ja')
+#        logging.debug('[Google Translate] {} -> {}'.format(keyword, japanese_keyword))
+#        if re.search('[a-zA-Z]', japanese_keyword):  # we don't want that: Fed watch -> Fed時計
+#            continue
+#        yield japanese_keyword
 
 
 def run():
